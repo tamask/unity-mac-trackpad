@@ -1,0 +1,11 @@
+Plugin/MacTrackpad.xcodeproj/xcuserdata/*
+Plugin/MacTrackpad.xcodeproj/project.xcworkspace/*
+Project/Library
+Project/Temp
+Project/*.csproj
+Project/*.pidb
+Project/*.sln
+Project/Assembly*
+Project/*.userprefs
+Project/build
+Project/*__pycache__

@@ -1,0 +1,299 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		02202DA91950CC7100F0B552 /* mactrackpad.c in Sources */ = {isa = PBXBuildFile; fileRef = 02202DA51950CC7100F0B552 /* mactrackpad.c */; };
+		02202DAA1950CC7100F0B552 /* Plugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 02202DA81950CC7100F0B552 /* Plugin.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		024E806619506D4F002B270E /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 024E806519506D4F002B270E /* CoreFoundation.framework */; };
+		024E806C19506D4F002B270E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 024E806A19506D4F002B270E /* InfoPlist.strings */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		02202DA51950CC7100F0B552 /* mactrackpad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mactrackpad.c; path = MacTrackpad/mactrackpad.c; sourceTree = SOURCE_ROOT; };
+		02202DA61950CC7100F0B552 /* mactrackpad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mactrackpad.h; path = MacTrackpad/mactrackpad.h; sourceTree = SOURCE_ROOT; };
+		02202DA71950CC7100F0B552 /* Plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Plugin.h; path = MacTrackpad/Plugin.h; sourceTree = SOURCE_ROOT; };
+		02202DA81950CC7100F0B552 /* Plugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Plugin.m; path = MacTrackpad/Plugin.m; sourceTree = SOURCE_ROOT; };
+		024E806219506D4F002B270E /* MacTrackpad.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacTrackpad.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		024E806519506D4F002B270E /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		024E806919506D4F002B270E /* MacTrackpad-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MacTrackpad-Info.plist"; sourceTree = "<group>"; };
+		024E806B19506D4F002B270E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		024E807419507132002B270E /* MacTrackpad-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MacTrackpad-Prefix.pch"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		024E805F19506D4F002B270E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				024E806619506D4F002B270E /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		024E805919506D4E002B270E = {
+			isa = PBXGroup;
+			children = (
+				024E806719506D4F002B270E /* Sources */,
+				024E806419506D4F002B270E /* Frameworks */,
+				024E806319506D4F002B270E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		024E806319506D4F002B270E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				024E806219506D4F002B270E /* MacTrackpad.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		024E806419506D4F002B270E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				024E806519506D4F002B270E /* CoreFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		024E806719506D4F002B270E /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				02202DA51950CC7100F0B552 /* mactrackpad.c */,
+				02202DA61950CC7100F0B552 /* mactrackpad.h */,
+				02202DA71950CC7100F0B552 /* Plugin.h */,
+				02202DA81950CC7100F0B552 /* Plugin.m */,
+				024E806819506D4F002B270E /* Supporting Files */,
+			);
+			name = Sources;
+			path = MacTrackpad;
+			sourceTree = "<group>";
+		};
+		024E806819506D4F002B270E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				024E807419507132002B270E /* MacTrackpad-Prefix.pch */,
+				024E806919506D4F002B270E /* MacTrackpad-Info.plist */,
+				024E806A19506D4F002B270E /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		024E806119506D4F002B270E /* MacTrackpad */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 024E807019506D4F002B270E /* Build configuration list for PBXNativeTarget "MacTrackpad" */;
+			buildPhases = (
+				024E805E19506D4F002B270E /* Sources */,
+				024E805F19506D4F002B270E /* Frameworks */,
+				024E806019506D4F002B270E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MacTrackpad;
+			productName = MacTrackpad;
+			productReference = 024E806219506D4F002B270E /* MacTrackpad.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		024E805A19506D4F002B270E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Cardboard Computer, LLC";
+			};
+			buildConfigurationList = 024E805D19506D4F002B270E /* Build configuration list for PBXProject "MacTrackpad" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 024E805919506D4E002B270E;
+			productRefGroup = 024E806319506D4F002B270E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				024E806119506D4F002B270E /* MacTrackpad */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		024E806019506D4F002B270E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				024E806C19506D4F002B270E /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		024E805E19506D4F002B270E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				02202DAA1950CC7100F0B552 /* Plugin.m in Sources */,
+				02202DA91950CC7100F0B552 /* mactrackpad.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		024E806A19506D4F002B270E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				024E806B19506D4F002B270E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		024E806E19506D4F002B270E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		024E806F19506D4F002B270E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		024E807119506D4F002B270E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MacTrackpad/MacTrackpad-Prefix.pch";
+				INFOPLIST_FILE = "MacTrackpad/MacTrackpad-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				PRODUCT_NAME = MacTrackpad;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		024E807219506D4F002B270E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MacTrackpad/MacTrackpad-Prefix.pch";
+				INFOPLIST_FILE = "MacTrackpad/MacTrackpad-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				PRODUCT_NAME = MacTrackpad;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		024E805D19506D4F002B270E /* Build configuration list for PBXProject "MacTrackpad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				024E806E19506D4F002B270E /* Debug */,
+				024E806F19506D4F002B270E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		024E807019506D4F002B270E /* Build configuration list for PBXNativeTarget "MacTrackpad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				024E807119506D4F002B270E /* Debug */,
+				024E807219506D4F002B270E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 024E805A19506D4F002B270E /* Project object */;
+}
