@@ -79,7 +79,7 @@ NSView* view = nil;
 
 TrackingObject* trackingObject = nil;
 
-int ExtInit()
+int ExtInit(int maxQueuedEvents)
 {
   NSApplication* app = [NSApplication sharedApplication];
   NSWindow* window = [app mainWindow];
@@ -90,7 +90,7 @@ int ExtInit()
       if (mt_free (touch_buffer))
         return 2;
     }
-  if (mt_init (&touch_buffer, 32))
+  if (mt_init (&touch_buffer, maxQueuedEvents))
     return 1;
 
   /* tracking buffer init */
