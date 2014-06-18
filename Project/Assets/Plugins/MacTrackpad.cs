@@ -180,6 +180,8 @@ public class MacTrackpad {
               {
                 if (t.phase == MacTouchPhase.Began || t.phase == MacTouchPhase.Moved)
                   t.phase = MacTouchPhase.Stationary;
+
+                t.deltaPosition = Vector2.zero;
                 t.deltaTime = 0;
               }
           }
