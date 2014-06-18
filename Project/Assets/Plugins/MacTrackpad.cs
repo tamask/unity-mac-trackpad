@@ -65,6 +65,7 @@ public class MacTrackpad {
   }
 
   static protected int initState;
+  static protected float lastPolled;
 
   static protected Dictionary<int,MacTrackpadDevice> devicesById =
     new Dictionary<int,MacTrackpadDevice>();
@@ -134,6 +135,7 @@ public class MacTrackpad {
 
   static public void Poll()
   {
+    float deltaTime;
     IntPtr extBufferPtr;
     IntPtr extEventPtr;
     IntPtr extTouchPtr;
@@ -144,7 +146,6 @@ public class MacTrackpad {
     List<MacTouch> touches;
     int stray;
     Dictionary<int,int> newDeviceTouchCount;
-
 
     if (initState == 0)
       {
@@ -165,6 +166,8 @@ public class MacTrackpad {
 
     if (initState == 1)
       {
+        deltaTime = Time.time - lastPolled;
+
         /* cleanup/alter old (one-frame) touches */
 
         foreach (List<MacTouch> touchList in deviceTouches.Values)
@@ -173,9 +176,12 @@ public class MacTrackpad {
               x.phase == MacTouchPhase.Ended ||
               x.phase == MacTouchPhase.Cancelled);
 
-            foreach (MacTouch t in touchList.FindAll(x =>
-              (x.phase == MacTouchPhase.Began || x.phase == MacTouchPhase.Moved)))
-              t.phase = MacTouchPhase.Stationary;
+            foreach (MacTouch t in touchList)
+              {
+                if (t.phase == MacTouchPhase.Began || t.phase == MacTouchPhase.Moved)
+                  t.phase = MacTouchPhase.Stationary;
+                t.deltaTime = 0;
+              }
           }
 
         /* create temp new touch counts */
@@ -213,11 +219,10 @@ public class MacTrackpad {
               }
           }
 
-        /* update device list */
-
         foreach (KeyValuePair<int,List<MacTouch>> kv in deviceTouches)
           {
-            touches = deviceTouches[kv.Key];
+            /* remove stray touches */
+            touches = new List<MacTouch>(deviceTouches[kv.Key]);
             touches.Sort();
             stray = touches.Count -
               (newDeviceTouchCount.ContainsKey(kv.Key) ? newDeviceTouchCount[kv.Key] : touches.Count);
@@ -226,12 +231,22 @@ public class MacTrackpad {
             for (int i = 0; i < stray; i++)
               touches[i].phase = MacTouchPhase.Ended;
 
+            /* hand-set delta times for persistent touches */
+            foreach (MacTouch t in touches)
+              {
+                if (t.deltaTime == 0)
+                  t.deltaTime = deltaTime;
+              }
+
+            /* update device list */
             dev = devicesById[kv.Key];
             dev.touchCount = kv.Value.Count;
             dev.touches = kv.Value.ToArray();
           }
 
         ExtClear();
+
+        lastPolled = Time.time;
       }
   }
 
