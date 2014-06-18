@@ -13,7 +13,7 @@ public enum MacTouchPhase
   Cancelled
 };
 
-public class MacTouch
+public class MacTouch : IComparable<MacTouch>
 {
   public Vector2 deltaPosition;
   public float deltaTime;
@@ -22,6 +22,11 @@ public class MacTouch
   public Vector2 position;
   public int tapCount;
   public float time;
+
+  public int CompareTo(MacTouch other)
+  {
+    return (int)(this.time - other.time * 1000000f);
+  }
 }
 
 public class MacTrackpadDevice
@@ -66,6 +71,9 @@ public class MacTrackpad {
 
   static protected Dictionary<int,List<MacTouch>> deviceTouches =
     new Dictionary<int,List<MacTouch>>();
+
+  static protected Dictionary<int,int> deviceTouchCount =
+    new Dictionary<int,int>();
 
   static protected List<MacTrackpadDevice> deviceList =
     new List<MacTrackpadDevice>();
@@ -133,6 +141,10 @@ public class MacTrackpad {
     ExtEvent extEvent;
     ExtTouch extTouch;
     MacTrackpadDevice dev;
+    List<MacTouch> touches;
+    int stray;
+    Dictionary<int,int> newDeviceTouchCount;
+
 
     if (initState == 0)
       {
@@ -144,6 +156,7 @@ public class MacTrackpad {
             initState = 1;
             devicesById = new Dictionary<int,MacTrackpadDevice>();
             deviceTouches = new Dictionary<int,List<MacTouch>>();
+            deviceTouchCount = new Dictionary<int,int>();
             deviceList = new List<MacTrackpadDevice>();
           }
         else
@@ -154,14 +167,20 @@ public class MacTrackpad {
       {
         /* cleanup/alter old (one-frame) touches */
 
-        foreach (List<MacTouch> touches in deviceTouches.Values)
+        foreach (List<MacTouch> touchList in deviceTouches.Values)
           {
-            touches.RemoveAll(x =>
+            touchList.RemoveAll(x =>
               x.phase == MacTouchPhase.Ended ||
               x.phase == MacTouchPhase.Cancelled);
-            foreach (MacTouch t in touches.FindAll(x => x.phase == MacTouchPhase.Began))
-              t.phase = MacTouchPhase.Began;
+
+            foreach (MacTouch t in touchList.FindAll(x =>
+              (x.phase == MacTouchPhase.Began || x.phase == MacTouchPhase.Moved)))
+              t.phase = MacTouchPhase.Stationary;
           }
+
+        /* create temp new touch counts */
+
+        newDeviceTouchCount = new Dictionary<int,int>();
 
         /* consume new touches */
 
@@ -182,6 +201,9 @@ public class MacTrackpad {
                         while (extTouchPtr != IntPtr.Zero)
                           {
                             extTouch = (ExtTouch)Marshal.PtrToStructure(extTouchPtr, typeof(ExtTouch));
+                            if (!newDeviceTouchCount.ContainsKey(extTouch.deviceId))
+                              newDeviceTouchCount[extTouch.deviceId] = 0;
+                            newDeviceTouchCount[extTouch.deviceId]++;
                             HandleExtTouch(extTouch, extEvent.time);
                             extTouchPtr = extTouch.next;
                           }
@@ -195,6 +217,15 @@ public class MacTrackpad {
 
         foreach (KeyValuePair<int,List<MacTouch>> kv in deviceTouches)
           {
+            touches = deviceTouches[kv.Key];
+            touches.Sort();
+            stray = touches.Count -
+              (newDeviceTouchCount.ContainsKey(kv.Key) ? newDeviceTouchCount[kv.Key] : touches.Count);
+            if (stray < 0)
+              stray = 0;
+            for (int i = 0; i < stray; i++)
+              touches[i].phase = MacTouchPhase.Ended;
+
             dev = devicesById[kv.Key];
             dev.touchCount = kv.Value.Count;
             dev.touches = kv.Value.ToArray();
@@ -226,6 +257,10 @@ public class MacTrackpad {
         touches = deviceTouches[extTouch.deviceId];
         deviceSize = dev.size;
       }
+
+    if (!deviceTouchCount.ContainsKey(extTouch.deviceId))
+      deviceTouchCount.Add(extTouch.deviceId, 0);
+    deviceTouchCount[extTouch.deviceId]++;
 
     touch = touches.Find(x => x.fingerId == extTouch.id);
     position = new Vector2(extTouch.normalizedPosX, extTouch.normalizedPosY);
